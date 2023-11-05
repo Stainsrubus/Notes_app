@@ -1,0 +1,132 @@
+// import React, { useContext, useState,useEffect} from 'react'
+// import '../components/create.css'
+// import { NotesDataContext } from '../context/NotesContext'
+// import Form from 'react-bootstrap/Form';
+// import { useNavigate,useParams } from 'react-router-dom';
+
+
+// const Edit= ()=> {
+//   let {data,setData}=useContext(NotesDataContext)
+//   const params = useParams()
+//   const [initialValues,setInitialValues] = useState({
+//    title:" ",
+//    content:" "
+//   })
+//   let navigate = useNavigate()
+
+
+//   const getData = (index)=>{
+//     let newValues = {...initialValues}
+//     newValues.title= data[index].title
+//     newValues.content = data[index].content
+//     setInitialValues(newValues)
+    
+//   }
+
+
+//   useEffect(()=>{
+//     if(Number(params.id)<data.length)
+//     {
+
+//         getData(Number(params.id))
+//     }
+//     else
+//     {
+//       navigate('/create')
+//     }
+//   },[])
+
+//   const handleSubmit=()=>{
+//     let newArray =[...data] ;//immutable deep copy
+//     newArray.push({
+//       title,
+//       content
+//     })
+//     setData(newArray);// state update
+//     navigate('/')
+//   }
+
+//   return <>
+
+//   <div className='window container-fluid '>
+//   <Form  onSubmit={handleSubmit}>
+//     <div className=' entry-box container-fluid card '>
+//       <div className='content d-flex'>
+//         <h3>Add a Note</h3>
+    
+//         <Form.Control className='note-title' value={initialValues.title} type="text" name='title' placeholder='Enter Title' onChange={(e)=>setTitle(e.target.value)} />
+        
+//         <Form.Control className='note-content' value={initialValues.content}  as="textarea" placeholder='Take a note...' onChange={(e)=>setContent(e.target.value)}/>
+        
+//       </div>
+//       <button className='btn btn-primary' type='submit' >Submit</button>
+//     </div>
+//     </Form>
+//     </div>
+//   </>
+// }
+
+// export default Edit
+
+
+
+
+// Edit.jsx
+// import React, { useContext, useState, useEffect } from 'react';
+// import '../components/create.css';
+// import { NotesDataContext } from '../context/NotesContext';
+// import Form from 'react-bootstrap/Form';
+// import { useNavigate, useParams } from 'react-router-dom';
+
+// const Edit = () => {
+//   const { data, setData } = useContext(NotesDataContext);
+//   const params = useParams();
+//   const navigate = useNavigate();
+
+//   const [initialValues,setInitialValues] = useState({
+//        title:" ",
+//        content:" "
+//       })
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     if (Number(params.id) < data.length) {
+//       const updatedData = [...data];
+//       updatedData[Number(params.id)] = { title, content };
+//       setData(updatedData);
+//       navigate('/');
+//     }
+//   };
+
+//   return (
+//     <div className='window container-fluid '>
+//       <Form onSubmit={handleSubmit}>
+//         <div className='entry-box container-fluid card'>
+//           <div className='content d-flex'>
+//             <h3>Edit Note</h3>
+//             <Form.Control
+//               className='note-title'
+//               value={initialValues.title}
+//               type='text'
+//               name='title'
+//               placeholder='Enter Title'
+//               onChange={(e) => setTitle(e.target.value)}
+//             />
+//             <Form.Control
+//               className='note-content'
+//               value={initialValues.content}
+//               as='textarea'
+//               placeholder='Edit your note...'
+//               onChange={(e) => setContent(e.target.value)}
+//             />
+//           </div>
+//           <button className='btn btn-primary' type='submit'>
+//             Submit
+//           </button>
+//         </div>
+//       </Form>
+//     </div>
+//   );
+// };
+
+// export default Edit;
